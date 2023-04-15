@@ -210,121 +210,147 @@ class _TranscriptorState extends State<Transcriptor> {
                         ],
                       ),
                     ),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   isShowingLanguageDropdown ? Container(
                             alignment: Alignment.center,
                             width: 370,
                             height: null,
                             decoration: BoxDecoration(
-                              color: Colors.transparent,
+                              color: Colors.white,
                               borderRadius: BorderRadius.circular(12),
                               //border: Border.all(color: Colors.black, width: 1)
                             ),
-                            child: Stack(
-                                    alignment: AlignmentDirectional.topStart,
+                            child: Column(
                                     children: [
                                       TextField(
+                                        style: const TextStyle(
+                                          fontFamily: "DM_sans",
+                                            fontSize: 25,
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold,
+                                        ),
+                                        textAlign: TextAlign.justify,
                                         textCapitalization: TextCapitalization.sentences,
                                         controller: textFieldController,
-                                        maxLength: 5000,
-                                        minLines: 10,
+                                        minLines: 5,
                                         maxLines: null,
                                         onChanged: (value) {
                                           setState(() {
                                             // trigger a rebuild when the text changes
                                           });
                                         },
-                                        decoration: InputDecoration(
-                                          prefixIcon: Padding(
-                                            padding: const EdgeInsets.only(bottom: 170, left: 0.1),
-                                            child: Visibility(
+                                        decoration: const InputDecoration(
+                                          labelText: "Black",
+                                          labelStyle: TextStyle(
+                                            fontFamily: "DM_sans",
+                                            fontSize: 20,
+                                            color: Colors.grey,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                          hintText: "Enter your text...",
+                                          hintStyle: TextStyle(
+                                            fontFamily: "DM_sans",
+                                            fontSize: 25,
+                                            color: Color(0xFF2BB4FF),
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                          filled: true,
+                                          fillColor: Colors.white,
+                                          /*border: OutlineInputBorder(
+                                            borderRadius: BorderRadius.circular(12),
+                                          ),*/
+                                        ),
+                                      ),
+                                     // adjust the position as needed
+                                     Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                          children: [
+                                            Visibility(
                                               visible: textFieldController.text.isNotEmpty,
                                               child: IconButton(
                                                 icon: const Icon(Icons.clear),
                                                 onPressed: () {
                                                   setState(() {
                                                     textFieldController.clear();
+                                                    brailleFieldController.clear();
                                                   });
                                                 },
                                               ),
                                             ),
-                                          ),
-                                          hintText: "Black......",
-                                          hintStyle: const TextStyle(
-                                            fontFamily: "DM_sans",
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                          filled: true,
-                                          border: OutlineInputBorder(
-                                            borderRadius: BorderRadius.circular(12),
-                                          ),
+                                            IconButton(
+                                              icon: const Icon(Icons.cloud_upload),
+                                              onPressed: () {},
+                                            ),
+                                          ],
                                         ),
-                                      ),
-                                      Positioned(
-                                        bottom: 15.0, // adjust the position as needed
-                                        right: 5.0, // adjust the position as needed
-                                        child: IconButton(
-                                          icon: const Icon(Icons.cloud_upload),
-                                          onPressed: () {},
-                                        ),
-                                      ),
-                                    ],
+                                      ],
                                   ),
-                            ):Container(
+                            ): Container(
                             alignment: Alignment.center,
                             width: 370,
                             height: null,
                             decoration: BoxDecoration(
-                              color: Colors.transparent,
+                              color: Colors.white,
                               borderRadius: BorderRadius.circular(12),
                               //border: Border.all(color: Colors.black, width: 1)
                             ),
-                            child: Stack(
-                                    alignment: AlignmentDirectional.topStart,
+                            child: Column(
                                     children: [
                                       TextField(
+                                        style: const TextStyle(
+                                          fontFamily: "DM_sans",
+                                            fontSize: 25,
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold,
+                                        ),
                                         textCapitalization: TextCapitalization.sentences,
                                         controller: brailleFieldController,
-                                        maxLength: 5000,
-                                        minLines: 10,
+                                        minLines: 5,
                                         maxLines: null,
                                         onChanged: (value) {
                                           setState(() {
                                             // trigger a rebuild when the text changes
                                           });
                                         },
-                                        decoration: InputDecoration(
-                                          prefixIcon: Padding(
-                                            padding: const EdgeInsets.only(bottom: 170, left: 0.1),
-                                            child: Visibility(
+                                        decoration: const InputDecoration(
+                                          labelText: "Braille",
+                                          labelStyle: TextStyle(
+                                            fontFamily: "DM_sans",
+                                            fontSize: 20,
+                                            color: Colors.grey,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                          hintText: "Enter your braille...",
+                                          hintStyle: TextStyle(
+                                            fontFamily: "DM_sans",
+                                            fontSize: 25,
+                                            color: Color(0xFF2BB4FF),
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                          filled: true,
+                                          fillColor: Colors.white,
+                                          /*border: OutlineInputBorder(
+                                            borderRadius: BorderRadius.circular(12),
+                                          ),*/
+                                        ),
+                                      ),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.end,
+                                          children: [
+                                            Visibility(
                                               visible: brailleFieldController.text.isNotEmpty,
                                               child: IconButton(
                                                 icon: const Icon(Icons.clear),
                                                 onPressed: () {
                                                   setState(() {
+                                                    textFieldController.clear();
                                                     brailleFieldController.clear();
                                                   });
                                                 },
                                               ),
                                             ),
-                                          ),
-                                          hintText: "Braille......",
-                                          hintStyle: const TextStyle(
-                                            fontFamily: "DM_sans",
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                          filled: true,
-                                          border: OutlineInputBorder(
-                                            borderRadius: BorderRadius.circular(12),
-                                          ),
-                                        ),
-                                      ),
-                                      Positioned(
-                                        bottom: 15.0, // adjust the position as needed
-                                        right: 5.0, // adjust the position as needed
-                                        child: Row(
-                                          children: [
                                             IconButton(
                                               icon: const Icon(Icons.copy),
                                               onPressed: () {},
@@ -335,67 +361,64 @@ class _TranscriptorState extends State<Transcriptor> {
                                             ),
                                           ],
                                         ),
-                                      ),
                                     ],
                                   ),
                             ),
                     const SizedBox(
-                      height: 20,
+                      height: 40,
                     ),
-                    isShowingLanguageDropdown ? Container(
+                    if(textFieldController.text.isNotEmpty || brailleFieldController.text.isNotEmpty) isShowingLanguageDropdown ? Container(
                             alignment: Alignment.center,
                             width: 370,
                             height: null,
                             decoration: BoxDecoration(
-                              color: Colors.transparent,
+                              color: Colors.white,
                               borderRadius: BorderRadius.circular(12),
                               //border: Border.all(color: Colors.black, width: 1)
                             ),
-                            child: Stack(
-                                    alignment: AlignmentDirectional.topStart,
+                            child: Column(
                                     children: [
                                       TextField(
+                                        style: const TextStyle(
+                                          fontFamily: "DM_sans",
+                                            fontSize: 25,
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold,
+                                        ),
+                                        readOnly: true,
                                         textCapitalization: TextCapitalization.sentences,
                                         controller: brailleFieldController,
-                                        maxLength: 5000,
-                                        minLines: 10,
+                                        minLines: 5,
                                         maxLines: null,
                                         onChanged: (value) {
                                           setState(() {
                                             // trigger a rebuild when the text changes
                                           });
                                         },
-                                        decoration: InputDecoration(
-                                          prefixIcon: Padding(
-                                            padding: const EdgeInsets.only(bottom: 170, left: 0.1),
-                                            child: Visibility(
-                                              visible: brailleFieldController.text.isNotEmpty,
-                                              child: IconButton(
-                                                icon: const Icon(Icons.clear),
-                                                onPressed: () {
-                                                  setState(() {
-                                                    brailleFieldController.clear();
-                                                  });
-                                                },
-                                              ),
-                                            ),
-                                          ),
-                                          hintText: "Braille......",
-                                          hintStyle: const TextStyle(
+                                        decoration: const InputDecoration(
+                                          labelText: "Braille",
+                                          labelStyle: TextStyle(
                                             fontFamily: "DM_sans",
-                                            fontSize: 14,
+                                            fontSize: 20,
+                                            color: Colors.grey,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                          hintText: "Transcriptor to braille...",
+                                          hintStyle: TextStyle(
+                                            fontFamily: "DM_sans",
+                                            fontSize: 25,
+                                            color: Color(0xFF2BB4FF),
                                             fontWeight: FontWeight.bold,
                                           ),
                                           filled: true,
-                                          border: OutlineInputBorder(
+                                          fillColor: Colors.white,
+                                          /*border: OutlineInputBorder(
                                             borderRadius: BorderRadius.circular(12),
-                                          ),
+                                          ),*/
                                         ),
                                       ),
-                                      Positioned(
-                                        bottom: 15.0, // adjust the position as needed
-                                        right: 5.0, // adjust the position as needed
-                                        child: Row(
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.end,
                                           children: [
                                             IconButton(
                                               icon: const Icon(Icons.copy),
@@ -407,7 +430,6 @@ class _TranscriptorState extends State<Transcriptor> {
                                             ),
                                           ],
                                         ),
-                                      ),
                                     ],
                                   ),
                             ):Container(
@@ -415,58 +437,59 @@ class _TranscriptorState extends State<Transcriptor> {
                             width: 370,
                             height: null,
                             decoration: BoxDecoration(
-                              color: Colors.transparent,
+                              color: Colors.white,
                               borderRadius: BorderRadius.circular(12),
                               //border: Border.all(color: Colors.black, width: 1)
                             ),
-                            child: Stack(
-                                    alignment: AlignmentDirectional.topStart,
+                            child: Column(
                                     children: [
                                       TextField(
+                                        style: const TextStyle(
+                                          fontFamily: "DM_sans",
+                                            fontSize: 25,
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold,
+                                        ),
+                                        readOnly: true,
                                         textCapitalization: TextCapitalization.sentences,
                                         controller: textFieldController,
-                                        maxLength: 5000,
-                                        minLines: 10,
+                                        minLines: 5,
                                         maxLines: null,
                                         onChanged: (value) {
                                           setState(() {
                                             // trigger a rebuild when the text changes
                                           });
                                         },
-                                        decoration: InputDecoration(
-                                          prefixIcon: Padding(
-                                            padding: const EdgeInsets.only(bottom: 170, left: 0.1),
-                                            child: Visibility(
-                                              visible: textFieldController.text.isNotEmpty,
-                                              child: IconButton(
-                                                icon: const Icon(Icons.clear),
-                                                onPressed: () {
-                                                  setState(() {
-                                                    textFieldController.clear();
-                                                  });
-                                                },
-                                              ),
-                                            ),
-                                          ),
-                                          hintText: "Black......",
-                                          hintStyle: const TextStyle(
+                                        decoration: const InputDecoration(
+                                          labelText: "Black",
+                                          labelStyle: TextStyle(
                                             fontFamily: "DM_sans",
-                                            fontSize: 14,
+                                            fontSize: 20,
+                                            color: Colors.grey,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                          hintText: "Transcriptor to text...",
+                                          hintStyle: TextStyle(
+                                            fontFamily: "DM_sans",
+                                            fontSize: 25,
+                                            color: Color(0xFF2BB4FF),
                                             fontWeight: FontWeight.bold,
                                           ),
                                           filled: true,
-                                          border: OutlineInputBorder(
+                                          fillColor: Colors.white,
+                                          /*border: OutlineInputBorder(
                                             borderRadius: BorderRadius.circular(12),
-                                          ),
+                                          ),*/
                                         ),
                                       ),
-                                      Positioned(
-                                        bottom: 15.0, // adjust the position as needed
-                                        right: 5.0, // adjust the position as needed
-                                        child: IconButton(
-                                          icon: const Icon(Icons.cloud_upload),
-                                          onPressed: () {},
-                                        ),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.end,
+                                        children: [
+                                          IconButton(
+                                              icon: const Icon(Icons.cloud_download),
+                                              onPressed: () {},
+                                            ),
+                                        ],
                                       ),
                                     ],
                                   ),
