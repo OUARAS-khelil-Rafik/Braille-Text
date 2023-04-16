@@ -5,11 +5,15 @@ import 'package:flutter/material.dart';
 import '../Pages/Scan.dart';
 import '../Pages/Translation.dart';
 import '../Pages/Transcriptor.dart';
-//import 'package:flutter/services.dart';
 
-class NavBar extends StatelessWidget {
+class NavBar extends StatefulWidget {
   const NavBar({super.key});
 
+  @override
+  State<NavBar> createState() => _NavBarState();
+}
+
+class _NavBarState extends State<NavBar> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -51,15 +55,23 @@ class NavBar extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.format_align_left, color: Color(0xFF2BB4FF), size: 35,),
             title: const Text("Transcriptor", style: TextStyle(color: Colors.black, fontFamily: 'DM_Sans',fontSize: 20, fontWeight: FontWeight.bold),),
-            onTap: () => const Transcriptor(),
+            onTap: () async{
+              Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const Transcriptor()));
+            }
           ),
           const SizedBox(
             height: 20,
            ),
           ListTile(
-            leading: const Icon(Icons.change_circle, color: Color(0xFF2BB4FF), size: 35,),
+            leading: const Icon(Icons.drag_indicator_outlined, color: Color(0xFF2BB4FF), size: 35,),
             title: const Text("Translation", style: TextStyle(color: Colors.black, fontFamily: 'DM_Sans',fontSize: 20, fontWeight: FontWeight.bold),),
-            onTap: () => const Translation(),
+            onTap: () async{
+              Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const Translation()));
+            }
           ),
           const SizedBox(
             height: 20,
@@ -67,7 +79,11 @@ class NavBar extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.document_scanner_outlined, color: Color(0xFF2BB4FF), size: 35,),
             title: const Text("Scan", style: TextStyle(color: Colors.black, fontFamily: 'DM_Sans',fontSize: 20, fontWeight: FontWeight.bold),),
-            onTap: () =>  const Scan(),
+            onTap: () async{
+              Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const Scan()));
+            }
           ),
           const Divider(
             height: 30,

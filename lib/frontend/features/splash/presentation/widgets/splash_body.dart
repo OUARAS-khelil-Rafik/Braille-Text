@@ -1,8 +1,8 @@
+import 'package:braille_text/frontend/Pages/transcriptor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-import '../../../../Pages/MainPages.dart';
 
 
 class SplashViewBody extends StatefulWidget {
@@ -16,9 +16,9 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   @override
   void initState(){
     super.initState();
-    Future.delayed(const Duration(seconds: 7)).then((value) {
+    Future.delayed(const Duration(seconds: 5)).then((value) {
       Navigator.of(context).pushReplacement(
-        CupertinoPageRoute(builder: (ctx) => const MainPages())
+        CupertinoPageRoute(builder: (ctx) => const Transcriptor())
       );
     });
   }
