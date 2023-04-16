@@ -1,7 +1,6 @@
 // ignore_for_file: file_names, non_constant_identifier_names, use_build_context_synchronously
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
 import '../Bars/NavBar.dart';
 import '../Voice/speech_text_recognizer.dart';
 import 'package:speech_to_text/speech_recognition_result.dart';
@@ -14,7 +13,6 @@ class Transcriptor extends StatefulWidget {
 }
 class _TranscriptorState extends State<Transcriptor> {
 
-  String recognizedText = "";
   bool isEnabled = true;
 
   @override
@@ -34,16 +32,10 @@ class _TranscriptorState extends State<Transcriptor> {
 
   void speechRecogListner(SpeechRecognitionResult result) {
     print(result.recognizedWords);
-    recognizedText = result.recognizedWords;
-    textFieldController.text = recognizedText;
-    setState(() {});
+    setState(() {
+      textFieldController.text = result.recognizedWords;
+    });
   }
-
-
-
-
-
-
 
 
 
@@ -367,8 +359,10 @@ class _TranscriptorState extends State<Transcriptor> {
                                               IconButton(
                                                 icon: !SpeechTextRecognizer.isListning() ? const Icon(Icons.mic) : const Icon(Icons.stop),
                                                 onPressed: () async {
-                                                  SpeechTextRecognizer.isListning() ? SpeechTextRecognizer.stopListning : _recognizedText();
-                                                  recognizedText;
+                                                  setState(() {
+                                                    SpeechTextRecognizer.isListning() ? SpeechTextRecognizer.stopListning : _recognizedText();
+                                                    textFieldController.text;
+                                                  });
                                                   }
                                               ),
                                               IconButton(
