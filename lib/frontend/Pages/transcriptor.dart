@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, non_constant_identifier_names, use_build_context_synchronously
+// ignore_for_file: file_names, non_constant_identifier_names, use_build_context_synchronously, avoid_print
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../Bars/NavBar.dart';
